@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f3ede1;
+  --color-paper-2: #faf6ee;
+  --color-paper-3: #e7ddc7;
+  --color-ink: #12301f;
+  --color-ink-2: #1d4530;
+  --color-mute: #5b5849;
+  --color-stamp: #d9531e;
+  --color-stamp-dark: #b23f14;
+  --color-stamp-soft: #f2a07a;
+  --color-valid: #1b7a4b;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  ::selection {
+    background: var(--color-stamp-soft);
+    color: var(--color-ink);
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-stamp);
+    outline-offset: 3px;
+  }
+}
+
+/* --- Papier bulletin : grain d'imprimerie, jamais du gris plat --- */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.num {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.rule {
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+}
+.rule-heavy {
+  border-top: 2px solid var(--color-ink);
+}
+
+/* Bandeau défilant des cours */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 52s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Révélation au scroll */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Photo d'identité du badge : tirage administratif, couleur au survol */
+.idphoto {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-paper-3);
+}
+.idphoto img {
+  filter: grayscale(0.45) sepia(0.26) contrast(1.06) brightness(1.02);
+  transition:
+    filter 0.45s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.badge-card:hover .idphoto img {
+  filter: grayscale(0) sepia(0) contrast(1) brightness(1);
+  transform: scale(1.04);
+}
+/* Voile d'encre pour asseoir la photo dans la palette du bulletin */
+.idphoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink) 4%, transparent),
+    color-mix(in srgb, var(--color-ink) 16%, transparent)
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Photographies de reportage : tirage presse unifié dans la palette du bulletin */
+.reportage img {
+  filter: saturate(0.82) sepia(0.14) contrast(1.05);
+}
+
+@keyframes slideTimer {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reportage img {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Lettrine de l'éditorial présidentiel */
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3.9em;
+  line-height: 0.78;
+  float: left;
+  padding-right: 0.12em;
+  padding-top: 0.06em;
+  color: var(--color-stamp-dark);
+}
+
+/* Filets d'imprimerie du tableau des cotations */
+.ledger tbody tr {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  transition: background-color 0.18s ease;
+}
+.ledger tbody tr:hover {
+  background-color: color-mix(in srgb, var(--color-stamp-soft) 26%, transparent);
+}
+
+.link-rule {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease;
+}
+.link-rule:hover {
+  background-size: 100% 2px;
+}

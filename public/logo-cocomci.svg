@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 132" width="600" height="132">
+  <title>COCOMCI — Coordination des Opérateurs de Commerce de Côte d'Ivoire</title>
+  <rect width="600" height="132" fill="#FFFFFF"/>
+
+  <!-- Emblème : anneau orange, carte de Côte d'Ivoire, monogramme en négatif -->
+  <g transform="translate(14, 14) scale(0.86)">
+    <path d="M71.9 15.6 A46 46 0 1 0 103.2 75.7" fill="none" stroke="#F0871F" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="103.2" cy="75.7" r="6.8" fill="#F0871F"/>
+    <path d="M35.5 27.4 L68.4 26.7 L73.3 37.6 L72.1 54.6 L74.6 68.2 L72.7 81.8 L63.4 86.6 L51 87.9 L37.4 83.8 L32.4 79.8 L29.3 70.2 L31.8 60.7 L25.6 51.2 L28.1 40.3 L33.6 30.8 Z" fill="#2B7A3F"/>
+    <path d="M60.5 72 A18 18 0 1 0 60.5 42" fill="none" stroke="#FFFFFF" stroke-width="7.5"/>
+    <path d="M46 57 H74" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round"/>
+    <path d="M49.5 57 H71" stroke="#2B7A3F" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- Filet de séparation : zone de protection -->
+  <rect x="132" y="36" width="1" height="60" fill="#12301F" opacity="0.18"/>
+
+  <!-- Logotype -->
+  <text x="155" y="72" font-family="Helvetica, Arial, sans-serif" font-size="50" font-weight="700"
+        letter-spacing="-0.9" fill="#2B7A3F">COCOMCI</text>
+
+  <text x="157" y="95" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#5B5849">
+    Coordination des Opérateurs de Commerce de Côte d&#39;Ivoire
+  </text>
+</svg>

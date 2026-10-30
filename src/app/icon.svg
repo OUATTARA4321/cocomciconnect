@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <title>COCOMCI</title>
+  <rect width="120" height="120" fill="#FFFFFF"/>
+  <path d="M71.9 15.6 A46 46 0 1 0 103.2 75.7" fill="none" stroke="#F0871F" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="103.2" cy="75.7" r="8" fill="#F0871F"/>
+  <path d="M70 40 A24 24 0 1 0 70 80" fill="none" stroke="#2B7A3F" stroke-width="15"/>
+  <path d="M48 60 H78" stroke="#2B7A3F" stroke-width="13" stroke-linecap="round"/>
+</svg>

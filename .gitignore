@@ -1,0 +1,43 @@
+# ───────────────────────────────────────────────────────────
+#  COCOMCI — fichiers exclus du dépôt
+# ───────────────────────────────────────────────────────────
+
+# SECRETS — ne jamais publier
+.env
+.env.local
+.env.production
+.env*.local
+*.pem
+*.key
+
+# Dépendances
+node_modules/
+.pnp
+.pnp.*
+
+# Compilation Next.js
+.next/
+out/
+build/
+dist/
+next-env.d.ts
+
+# Journaux
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environnements de développement
+.vercel
+.turbo
+*.tsbuildinfo
+
+# Système
+.DS_Store
+Thumbs.db
+
+# Dossiers de travail temporaires
+.preview/
+coverage/
